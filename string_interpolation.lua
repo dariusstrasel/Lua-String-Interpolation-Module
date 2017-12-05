@@ -3,8 +3,11 @@
 -- Credit to RiciLake for function logic. (http://lua-users.org/wiki/RiciLake)
 -- Description: This is a lua module that adds support for string interpolation.
 
-local function string_interpolation(s, tab)
-	return (s:gsub('($%b{})', function(w) return tab[w:sub(3, -2)] or w end))
+-- @summary Tokenizes an input string using a text pattern and replaces tokens with a table equivalent.
+-- @param string s
+-- @param table tab
+local function string_interpolation(stringToTokenize, tableToExpand)
+	return (stringToTokenize:gsub('($%b{})', function(token) return tableToExpand[token:sub(3, -2)] or token end))
 end
 
 
